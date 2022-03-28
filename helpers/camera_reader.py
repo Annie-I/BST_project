@@ -12,7 +12,7 @@ def stream():
     while True:
         # try to save image in img variable. success == true if loaded.
         SUCCESS, img = input.read()
-        # img delay + option to break out of loop:
+        # img delay + option to break out of loop by pressing q:
         cv.imshow("video", img)
         if cv.waitKey(1) & 0xFF == ord('q'):
             break

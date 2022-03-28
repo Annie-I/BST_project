@@ -27,11 +27,6 @@ camera_id = 0
 # image_reader.saveBinary("images/colors.png")
 # print("Bilde veiksmīgi apstrādāta un saglabāta")
 
-# <<<--- Transform picture to binary, mark circles and display it --->>>
-print("Sāk apļu atrašanu:")
-image_reader.getCircles("images/dots.jpg")
-print("Apļi veiksmīgi atrasti")
-
 # <<<--- Read and display camera stream --->>>
 # print("kameras stream sākums")
 # camera_reader.stream()

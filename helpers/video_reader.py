@@ -8,7 +8,7 @@ def play(path):
     while True:
         SUCCESS, img = vid.read() # try to save image in img variable. success == true if loaded.
         cv.imshow("video", img)
-        # img delay + option to break out of loop:
+        # img delay + option to break out of loop by pressing q:
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
