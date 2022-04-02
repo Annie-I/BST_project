@@ -1,5 +1,5 @@
-import imp
-from turtle import circle
+# import imp
+#from turtle import circle
 import cv2 as cv
 import numpy as np
 
@@ -10,7 +10,7 @@ def displayAsIs(path):
     # print image size
     print(img.shape)
     # display to user
-    cv.imshow("img", img) # name of the output window + image to display
+    cv.imshow("Original image", img) # name of the output window + image to display
     cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
     cv.destroyAllWindows()
@@ -22,7 +22,7 @@ def displayGrayscale(path):
     # convert to grayscale picture
     grayImg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     # display to user
-    cv.imshow("gray img", grayImg) # name of the output window + image to display
+    cv.imshow("Gray image", grayImg) # name of the output window + image to display
     cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
     cv.destroyAllWindows()
@@ -36,7 +36,7 @@ def displayBinary(path):
     # transform to binary
     (thresh, binaryImage) = cv.threshold(grayImg, 127, 255, cv.THRESH_BINARY)
     # display to user
-    cv.imshow("binary img", binaryImage) # name of the output window + image to display
+    cv.imshow("Binary image", binaryImage) # name of the output window + image to display
     cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
     cv.destroyAllWindows()
@@ -51,3 +51,27 @@ def saveBinary(path):
     (thresh, binaryImage) = cv.threshold(grayImg, 127, 255, cv.THRESH_BINARY)
     # save to disc
     cv.imwrite("images/binary.png", binaryImage)
+
+# function to detect edges that displays and saves the result to disc
+def getEdges(path):
+    # read the image
+    img = cv.imread(path)
+    # get the edges
+    imgCanny = cv.Canny(img, 100, 100) # (image, threshold, threshold)
+    # display to user
+    cv.imshow("Edges", imgCanny) # name of the output window + image to display
+    cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
+    # save to disc
+    cv.imwrite("images/edges.png", imgCanny)
+
+# function to thicken the edges
+def thickenEdges(path):
+    # read the image
+    img = cv.imread(path)
+    # set kernel: create 5x5 matrix filled with ones and object type - unsigned 8 bit integer (0-255)
+    kernel = np.ones((5, 5), np.uint8)
+    # widen the edges
+    imgDialation = cv.dilate(img, kernel, iterations=1) # img, kernel and iterations
+    # display to user
+    cv.imshow("Thicker edges", imgDialation) # name of the output window + image to display
+    cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)

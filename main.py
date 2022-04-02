@@ -23,9 +23,14 @@ camera_id = 0
 # print("bināra bilde beidzās")
 
 # <<<--- Transform picture to binary and save it without displaying it --->>>
-# print("Sāk pārveidošānu uz bināru attēlu:")
-# image_reader.saveBinary("images/colors.png")
-# print("Bilde veiksmīgi apstrādāta un saglabāta")
+print("Sāk pārveidošānu uz bināru attēlu:")
+image_reader.saveBinary("images/colors.jpg")
+print("Bilde veiksmīgi apstrādāta un saglabāta")
+
+# <<<--- Read image, find edges in it and display them --->>>
+print("Sāk malu meklēšanu:")
+image_reader.getEdges("images/binary.png")
+print("Malum meklēšana pabeigta")
 
 # <<<--- Read and display camera stream --->>>
 # print("kameras stream sākums")
