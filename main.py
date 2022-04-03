@@ -7,8 +7,8 @@ import helpers.draw as draw
 
 camera_id = 0
 colored_picture = "images/colors.jpg"
-bw_picture = "/images/binary.png"
-video = "/images/video.mp4"
+bw_picture = "images/binary.png"
+video = "images/video.mp4"
 
 # <<<--- Read and display picture as it is --->>>
 # print("bilde:")
@@ -35,10 +35,15 @@ video = "/images/video.mp4"
 # image.getEdges(bw_picture)
 # print("Malu meklēšana pabeigta")
 
-# <<<--- Read image, draw a line in it and display it to user --->>>
-# print("Sāk zīmēt")
+# <<<--- Read an image, draw a line in it and display it to user --->>>
+# print("Sāk zīmēt līniju")
 # draw.line(bw_picture)
-# print("Zīmēšana pabeigta")
+# print("Līnijas zīmēšana pabeigta")
+
+# <<<--- Read an image, draw a circle in it and display it to user --->>>
+print("Sāk zīmēt apli")
+draw.circle(bw_picture)
+print("Apļa zīmēšana pabeigta")
 
 # <<<--- Read and display camera stream --->>>
 # print("kameras stream sākums")
