@@ -1,5 +1,6 @@
 import cv2 as cv
 from sre_constants import SUCCESS
+import numpy as np
 
 def video(path):
     video = cv.VideoCapture(path) # create video capture object

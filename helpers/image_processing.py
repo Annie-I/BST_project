@@ -1,6 +1,9 @@
 import cv2 as cv
 import numpy as np
 
+def save(file_name, data):
+    cv.imwrite("images/"+ file_name +".png", data)
+
 # function to read picture and show to user
 def displayAsIs(path):
     # read the image
@@ -11,8 +14,6 @@ def displayAsIs(path):
     cv.imshow("Original image", img) # name of the output window + image to display
     cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
-    cv.destroyAllWindows()
-
 # function to read picture, convert it to grayscale and show to user
 def convertToGrayscale(path):
     # read the image
@@ -20,10 +21,10 @@ def convertToGrayscale(path):
     # convert to grayscale picture
     grayImg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     # save to disc
-    cv.imwrite("images/grayscale.png", grayImg)
+    save("grayscale", grayImg)
     # display to user
-    cv.imshow("Gray image", grayImg) # name of the output window + image to display
-    cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
+    #cv.imshow("Gray image", grayImg) # name of the output window + image to display
+    #cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
 # function to read picture, convert it to binary and save it to disc
 def convertToBinary(path):
@@ -34,10 +35,10 @@ def convertToBinary(path):
     # transform to binary
     (thresh, binaryImage) = cv.threshold(grayImg, 127, 255, cv.THRESH_BINARY)
     # save to disc
-    cv.imwrite("images/binary.png", binaryImage)
+    save("binary", binaryImage)
     # display to user
-    cv.imshow("Binary image", binaryImage) # name of the output window + image to display
-    cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
+    #cv.imshow("Binary image", binaryImage) # name of the output window + image to display
+    #cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
 def blur(path):
     # read the image
@@ -45,10 +46,10 @@ def blur(path):
     # blur the image
     blurred_img = cv.GaussianBlur(img, (3, 3), 0)
     # save to disc
-    cv.imwrite("images/blurred.png", blurred_img)
+    save("blurred", blurred_img)
     # display to user
-    cv.imshow("Blurred image", blurred_img) # name of the output window + image to display
-    cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
+    #cv.imshow("Blurred image", blurred_img) # name of the output window + image to display
+    #cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
 
 # function to detect edges that displays and saves the result to disc
 def getEdges(path):
@@ -61,7 +62,7 @@ def getEdges(path):
     cv.imshow("Edges", imgCanny) # name of the output window + image to display
     cv.waitKey(0) # delay closing image output window to see the picture (ms, but 0 is infinite)
     # save to disc
-    cv.imwrite("images/edges.png", imgCanny)
+    save("edges", imgCanny)
 
 # function to thicken the edges
 def thickenEdges(path):
