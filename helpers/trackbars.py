@@ -12,4 +12,11 @@ def canny_min_max():
     # create trackbar for max threshold value
     cv.createTrackbar("Max Threshold", "Trackbar", 0, 1000, nothing)
 
+def contour_area_min_max():
+    # create trackbar for min threshold value
+    # (trackbar name, window name where to display it, starting value, max value, f on change)
+    cv.createTrackbar("Min Area", "Trackbar", 0, 1000, nothing)
+    # create trackbar for max threshold value
+    cv.createTrackbar("Max Area", "Trackbar", 0, 1000, nothing)
+
 # TO-DO - could create trackbar for blur as well
