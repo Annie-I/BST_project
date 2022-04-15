@@ -43,6 +43,15 @@ def contours(path):
                 # (where to draw, what to draw, how many (negative value for all of them), (color), thickness (1 by default))
                 cv.drawContours(imgBw, contour, -1, (0, 0, 255), 2)
 
+                # get the center
+                M = cv.moments(contour)
+                if M["m00"] != 0:
+                    cX = int(M["m10"] / M["m00"])
+                    cY = int(M["m01"] / M["m00"])
+                else:
+                    cX, cY = 0, 0
+                cv.circle(imgBw, (cX, cY), 2, (0, 255, 0), -1)
+
         # display to user
         cv.imshow(result_window, imgBw) # name of the output window + image to display
         # print objects found
