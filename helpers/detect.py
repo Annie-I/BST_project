@@ -12,6 +12,9 @@ def contours(path):
     trackbars.canny_min_max()
     trackbars.contour_area_min_max()
 
+    points = []
+
+
     while True:
         # get trackbar min and max threshold variables
         min_threshold = cv.getTrackbarPos("Min Threshold", "Trackbar")
@@ -43,22 +46,29 @@ def contours(path):
                 # (where to draw, what to draw, how many (negative value for all of them), (color), thickness (1 by default))
                 cv.drawContours(imgBw, contour, -1, (0, 0, 255), 2)
 
-                # get the center
-                M = cv.moments(contour)
-                if M["m00"] != 0:
-                    cX = int(M["m10"] / M["m00"])
-                    cY = int(M["m01"] / M["m00"])
-                else:
-                    cX, cY = 0, 0
-                cv.circle(imgBw, (cX, cY), 2, (0, 255, 0), -1)
-
         # display to user
         cv.imshow(result_window, imgBw) # name of the output window + image to display
         # print objects found
         # delay closing image output window to see the picture (ms, but 0 is infinite)
         if cv.waitKey(500) & 0xFF == ord('q'):
+            # find selected contour centers and save those into points array
+            for contour in contours:
+                area = cv.contourArea(contour)
+                if (area > min_area) and (area < max_area):
+                    # get the center
+                    M = cv.moments(contour)
+                    if M["m00"] != 0:
+                        cX = int(M["m10"] / M["m00"])
+                        cY = int(M["m01"] / M["m00"])
+                    else:
+                        cX, cY = 0, 0
+                    cv.circle(imgBw, (cX, cY), 1, (0, 255, 0), -1)
+                    # save center coord in points array
+                    points.append(cX)
+                    points.append(cY)
             image.save("contours", imgBw)
             print("Attēls saglabāts")
+            print(points)
 
             break
 
