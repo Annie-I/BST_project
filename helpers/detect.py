@@ -2,18 +2,18 @@ import cv2 as cv
 import numpy as np
 import helpers.image_processing as image
 import helpers.trackbars as trackbars
+# import draw as draw
 
 bw_picture = "images/binary.png"
 blurred_picture = "images/blurred.png"
 result_window = "Result"
 
+points = []
+
 def contours(path):
     # create trackbars
     trackbars.canny_min_max()
     trackbars.contour_area_min_max()
-
-    points = []
-
 
     while True:
         # get trackbar min and max threshold variables
@@ -68,7 +68,7 @@ def contours(path):
                     points.append(cY)
             image.save("contours", imgBw)
             print("Attēls saglabāts")
-            print(points)
+            print("Atrasto punktu skaits: ", len(points)/2)
 
             break
 

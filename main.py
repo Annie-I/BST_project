@@ -1,10 +1,9 @@
+#import imp
 from sre_constants import SUCCESS
 import cv2 as cv
-import numpy as np
-import helpers.media_reader as read
-import helpers.image_processing as image
-import helpers.draw as draw
+#import helpers.image_processing as image
 import helpers.detect as detect
+import helpers.draw as draw
 
 camera_id = 0
 colored_picture = "images/colors.jpg"
@@ -26,7 +25,7 @@ blurred_picture = "images/blurred.png"
 
 # <<<--- Read an image, transform it to binary (black and white), save it to disc and display it to user  --->>>
 # print("Sāk pārveidošānu uz bināru attēlu")
-# image.toBinary(colored_picture)
+# image.convertToBinary(colored_picture)
 # print("Pārveidošana veiksmīgi izdevusies")
 
 # <<<--- Read image, find edges in it, display it to user and save to disc --->>>
@@ -45,9 +44,14 @@ blurred_picture = "images/blurred.png"
 # print("Apļa zīmēšana pabeigta")
 
 # <<<--- Read an image, detect contours in it and display the result to user --->>>
-print("Sāk meklēt kontūras")
-detect.contours(colored_picture)
-print("Kontūru meklēšana pabeigta")
+# print("Sāk meklēt kontūras")
+# detect.contours(colored_picture)
+# print("Kontūru meklēšana pabeigta")
+
+# <<<--- Read an image, detect circles and connect them with lines --->>>
+print ("Sāk meklēt apļus")
+draw.connect_dots()
+print ("Apļus savienošana pabeigta")
 
 # <<<--- Read and display camera stream --->>>
 # print("kameras stream sākums")
