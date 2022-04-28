@@ -1,9 +1,11 @@
 #import imp
 from sre_constants import SUCCESS
 import cv2 as cv
+import math
 #import helpers.image_processing as image
 import helpers.detect as detect
 import helpers.draw as draw
+import helpers.calculations as get
 
 camera_id = 0
 colored_picture = "images/colors.jpg"
@@ -12,6 +14,7 @@ bw_picture = "images/binary.png"
 video = "images/video.mp4"
 detected_edges = "images/edges.png"
 blurred_picture = "images/blurred.png"
+dots = "images/contours.png"
 
 # <<<--- Read and display picture as it is --->>>
 # print("bilde:")
@@ -48,11 +51,6 @@ blurred_picture = "images/blurred.png"
 # detect.contours(colored_picture)
 # print("Kontūru meklēšana pabeigta")
 
-# <<<--- Read an image, detect circles and connect them with lines --->>>
-print ("Sāk meklēt apļus")
-draw.connect_dots()
-print ("Apļus savienošana pabeigta")
-
 # <<<--- Read and display camera stream --->>>
 # print("kameras stream sākums")
 # read.stream()
@@ -63,7 +61,19 @@ print ("Apļus savienošana pabeigta")
 # read.video(video)
 # print("video beigas")
 
-# <<<--- Close opened windows --->>>
+#Result:
+# ------
+# <<<--- Read an image, detect circles and connect them with lines --->>>
+print ("Sāk meklēt apļus")
+detect.contours(colored_picture)
+print ("Apļus savienošana pabeigta")
+cv.destroyAllWindows()
 
+# <<<--- Read an image, mark points and calculate the angle between them --->>>
+print ("Var sākt meklēt leņķus. Pirmais punkts - virsotne, otrais - pa kreisi no pirmā vai augstāk par to, ja uz 1 līnijas")
+get.angles(dots)
+print ("leņķu meklēšāna beigusies")
+
+# <<<--- Close opened windows --->>>
 cv.destroyAllWindows()
 print("Programmas darbības beigas")
