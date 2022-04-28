@@ -1,7 +1,10 @@
 from copy import copy
+from sys import call_tracing
+from webbrowser import get
 import cv2 as cv
 import helpers.detect as detected
 import helpers.image_processing as image
+import helpers.calculations as calculate
 
 colored_picture = "images/colors.jpg"
 contoured_picture = "images/contours.png"
@@ -14,7 +17,7 @@ def line(path, start_width, start_height, end_width, end_height):
     # draw the circle
     # (where to draw, (starting point), (ending point), (color), thickness)
     cv.line(img, (start_width, start_height), (end_width, end_height), (0, 255, 0), 2)
-    image.save("lines", img)
+    # image.save("lines", img)
 
 
 #funtion to draw a circle
@@ -100,15 +103,5 @@ def connect_dots():
     line(lines, MP5[0], MP5[1], DM5[0], DM5[1])
     line(lines, DM5[0], DM5[1], D5[0], D5[1])
 
-    # i = 0
-    # j = 1
-    # count = 0
-    # while count < 4:
-    #     line(lines, detected.points[i], detected.points[j], detected.points[i+10], detected.points[j+10])
-    #     i = i + 10
-    #     j = j + 10
-    #     count = count + 1
-    # print(detected.points)
-
     # display to user
-    image.displayAsIs(lines)
+    #image.displayAsIs(lines)

@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+#function to save image to the disc
 def save(file_name, data):
     cv.imwrite("images/"+ file_name +".png", data)
 
