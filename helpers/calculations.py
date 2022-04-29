@@ -33,7 +33,7 @@ def angles(path):
         m2 = vector(b, c)
 
         radians = math.atan((m2 - m1) / (1+m1*m2))
-        degrees = round(math.degrees(radians))
+        degrees = round(math.degrees(radians), 2)
         # for angles >90° to be correct
         if (degrees < 0):
             degrees = degrees + 180
